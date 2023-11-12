@@ -1,17 +1,13 @@
+import { exec } from "child_process";
+
 export async function POST(request: Request) {
   const data = await request.json();
-  console.log(data);
-  return Response.json({ hello: true });
+  if (data["play"] == true) {
+    exec(`python3 python-handler.py song play ${data["song"]}`);
+  } else {
+    exec(`python3 python-handler.py song stop`);
+  }
+  return new Response("", {
+    status: 200,
+  });
 }
-
-// import { exec } from "child_process"
-
-// export async function POST(request: Request) {
-//     python_handler(Response.json({ request }))
-//     return Response.json({ request })
-// }
-
-// function python_handler (request) {
-//     console.log(request)
-//     exec(`python3 python-handler.py ${request}`)
-// }

@@ -1,7 +1,7 @@
 export async function POST(request: Request) {
   const data = await request.json();
   console.log(data);
-  return Response.json({ hello: true });
+  return Response.json({ ok: true });
 }
 
 // import { exec } from "child_process"
