@@ -1,12 +1,13 @@
 export async function POST(request: Request) {
-    const res = await request.json()
-    return Response.json({ res })
+  const data = await request.json();
+  console.log(data);
+  return Response.json({ hello: true });
 }
 
 // import { exec } from "child_process"
 
-// export async function POST(request: Request) {  
-//     python_handler(Response.json({ request })) 
+// export async function POST(request: Request) {
+//     python_handler(Response.json({ request }))
 //     return Response.json({ request })
 // }
 
