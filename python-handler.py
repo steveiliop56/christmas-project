@@ -1,14 +1,5 @@
-from gpiozero import Servo
 from time import sleep
-import subprocess
-import neopixel
-import board
 import sys
-import os
-
-pixels = neopixel.NeoPixel(board.D21, 8)
-
-servo = Servo(20)
 
 def servo_toggle():
     print("Dropping!")
@@ -46,13 +37,35 @@ def play_music(song):
         proc = subprocess.Popen("mpg123 music/6.mp3", shell=True)
 
 def stop_music():
-    os.system("pkill mpg123")
+    subprocess.Popen("pkill mpg123", shell=True)
+
 
 try:
-    if sys.argv[1] == "song":
-        if sys.argv[2] == "play":
-            play_music(sys.argv[3])
-        elif sys.argv[2] == "stop":
-            stop_music()
-except:
+    try:
+        if sys.argv[1] == "pixels":
+            import board
+            import neopixel
+            pixels = neopixel.NeoPixel(board.D21, 8)
+    except:
+        pass
+
+    try:
+        if sys.argv[1] == "servo":
+            servo = Servo(20)
+            from gpiozero import Servo
+    except:
+        pass
+
+    try:
+        if sys.argv[1] == "song":
+            import subprocess
+            if sys.argv[2] == "play":
+                play_music(sys.argv[3])
+            elif sys.argv[2] == "stop":
+                stop_music()
+    except:
+        pass
+
     print("ERROR: No arguments were provided.")
+except:
+    print("ERROR: An error occured!")
