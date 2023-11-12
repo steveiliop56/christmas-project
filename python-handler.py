@@ -48,8 +48,11 @@ def play_music(song):
 def stop_music():
     os.system("pkill mpg123")
 
-if sys.argv[1] == "song":
-    if sys.argv[2] == "play":
-        play_music(sys.argv[3])
-    elif sys.argv[2] == "stop":
-        stop_music()
+try:
+    if sys.argv[1] == "song":
+        if sys.argv[2] == "play":
+            play_music(sys.argv[3])
+        elif sys.argv[2] == "stop":
+            stop_music()
+except:
+    print("ERROR: No arguments were provided.")
