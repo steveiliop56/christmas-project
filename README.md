@@ -39,6 +39,7 @@ In terms of software:
 - Raspberry Pi OS 64bit/32bit
 - Python3
 - Node18/20
+- mpg123
 
 Now you need to connect the servo pwm pin to the 20th pin of the raspberry pi and to the ws2812 data pin to the pin 21 (also connect the power pins 🤣).
 
