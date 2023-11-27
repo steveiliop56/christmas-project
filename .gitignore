@@ -37,3 +37,6 @@ next-env.d.ts
 
 # music folder due to copyright
 /music
+
+# vscode configs
+/.vscode
