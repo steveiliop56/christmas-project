@@ -38,6 +38,7 @@ try:
        if sys.argv[1] == "servo":
             from gpiozero import Servo
             servo = Servo(20)
+            sleep(3)
             servo_toggle()
     except:
         pass
