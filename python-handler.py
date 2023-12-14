@@ -13,7 +13,7 @@ def servo_toggle():
 
 def led_strip_controller(color_list):
     print("Settings colors!")
-    for i in range(7):
+    for i in range(8):
         color = color_list[i]
         pixels[i] = tuple(int(color[i:i+2], 16) for i in (0, 2, 4))
 
