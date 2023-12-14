@@ -23,34 +23,21 @@ def play_music(song):
 def stop_music():
     subprocess.Popen("pkill mpg123", shell=True)
 
-try:
-    try:
-        if sys.argv[1] == "pixels":
-            import board
-            import neopixel
-            pixels = neopixel.NeoPixel(board.D21, 8)
-            color_list = [sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9]]
-            led_strip_controller(color_list)
-    except:
-        pass
-
-    try:
-       if sys.argv[1] == "servo":
-            from gpiozero import Servo
-            servo = Servo(20)
-            sleep(3)
-            servo_toggle()
-    except:
-        pass
-
-    try:
-        if sys.argv[1] == "song":
-            import subprocess
-            if sys.argv[2] == "play":
-                play_music(sys.argv[3])
-            elif sys.argv[2] == "stop":
-                stop_music()
-    except:
-        pass
-except:
-    print("ERROR: An error occured!")
+if sys.argv[1] == "pixels":
+    import board
+    import neopixel
+    pixels = neopixel.NeoPixel(board.D21, 8)
+    color_list = [sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5], sys.argv[6], sys.argv[7], sys.argv[8], sys.argv[9]]
+    led_strip_controller(color_list)
+elif sys.argv[1] == "servo":
+    from gpiozero import Servo
+    servo = Servo(20)
+    servo_toggle()
+elif sys.argv[1] == "song":
+    import subprocess
+    if sys.argv[2] == "play":
+        play_music(sys.argv[3])
+    elif sys.argv[2] == "stop":
+        stop_music()
+else:
+    print("ERROR: Cannot find argument!")
