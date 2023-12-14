@@ -55,7 +55,7 @@ export default function Home() {
 
   function SweetsThrower(e) {
     e.preventDefault();
-    fetch("/api/sweets-thrower", { method: "POST" });
+    fetch("/api/sweets-controller", { method: "POST" });
   }
 
   const ms = new Date("2023-12-25").getTime() - new Date().getTime();
