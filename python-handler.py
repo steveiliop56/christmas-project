@@ -4,11 +4,11 @@ import sys
 def servo_toggle():
     print("Dropping!")
     servo.max()
-    sleep(0.5)
+    sleep(1.2)
     servo.mid()
     sleep(1)
     servo.min()
-    sleep(0.5)
+    sleep(1.3)
     servo.mid()
 
 def led_strip_controller(color_list):
@@ -35,9 +35,9 @@ try:
         pass
 
     try:
-        if sys.argv[1] == "servo":
-            servo = Servo(20)
+       if sys.argv[1] == "servo":
             from gpiozero import Servo
+            servo = Servo(20)
             servo_toggle()
     except:
         pass
