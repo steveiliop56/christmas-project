@@ -13,6 +13,7 @@ export async function POST(request: Request) {
     data["led_req"]["led7"] +
     data["led_req"]["led8"];
   command = command.replaceAll("#", " ");
+  command = "sudo " + command;
   exec(command, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
